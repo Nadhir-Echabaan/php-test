@@ -1,12 +1,7 @@
 <?php
-require_once 'config.php';
-require_once 'controllers/AuthController.php';
-require_once 'models/UserModel.php';
-
-$action = $_GET['action'] ?? 'login';
-
-if ($action === 'signup') {
-    handleSignup();
-} else {
-    echo "404 - Page not found";
+if(isset($_GET["login"])||isset( $_SESSION["user_id"])){
+    header("Location: views/dashboard.php");
+    die();
+}else{
+    header("Location: views/login.php");
 }
